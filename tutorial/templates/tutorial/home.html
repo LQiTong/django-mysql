@@ -1,0 +1,20 @@
+{% extends "tutorial/layout.html" %}
+{% block content %}
+<div class="jumbotron">
+{#  <p>This example shows how to get an OAuth token from Azure using the <a href="https://docs.microsoft.com/azure/active-directory/develop/active-directory-v2-protocols-oauth-code" target="_blank">authorization code grant flow</a> and to use that token to make calls to the Outlook APIs.</p>#}
+{#  <p>#}
+{#    <a class="btn btn-lg btn-primary" href="{{signin_url}}" role="button" id="connect-button">Connect to Outlook</a>#}
+{#  </p>#}
+    <p>邮箱账号：{{ mail }}</p>
+    <p>来源：{{ app }}</p>
+{#    <p>收件箱：{{ inbox }}</p>#}
+    <p>是否有未读邮件：{{ hasUnread }}</p>
+    <p>时间：{{ mail_date }}</p>
+    <p>最新验证码：</p>
+    <p>
+        {% autoescape off %}
+            {{ code }}
+        {% endautoescape %}
+    </p>
+</div>
+{% endblock %}
