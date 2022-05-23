@@ -10,8 +10,8 @@ import base64
 class Outlook:
     def __init__(self):
         pass
-        self.imap = imaplib.IMAP4_SSL(imap_server, imap_port)
-        self.smtp = smtplib.SMTP(smtp_server, smtp_port)
+        # self.imap = imaplib.IMAP4_SSL(imap_server, imap_port)
+        # self.smtp = smtplib.SMTP(smtp_server, smtp_port)
         self.username = None
         self.password = None
 
@@ -22,7 +22,7 @@ class Outlook:
         login_attempts = 0
         while True:
             try:
-                # self.imap = imaplib.IMAP4_SSL(imap_server, imap_port)
+                self.imap = imaplib.IMAP4_SSL(imap_server, imap_port)
                 r, d = self.imap.login(username, password)
                 assert r == 'OK', 'login failed: %s' % str(r)
                 print(" > Signed in as %s" % self.username, d)
@@ -44,7 +44,7 @@ class Outlook:
         # headers = "\r\n".join(["from: " + "sms@kitaklik.com","subject: " + subject,"to: " + recipient,"mime-version: 1.0","content-type: text/html"])
         # content = headers + "\r\n\r\n" + message
         try:
-            # self.smtp = smtplib.SMTP(smtp_server, smtp_port)
+            self.smtp = smtplib.SMTP(smtp_server, smtp_port)
             self.smtp.ehlo()
             self.smtp.starttls()
             self.smtp.login(self.username, self.password)
